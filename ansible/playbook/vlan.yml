@@ -1,0 +1,72 @@
+---
+- name: centralRouter
+  hosts: centralRouter
+  become: true
+  
+  tasks:
+    - name: Cat ifcfg-vlan100
+      shell: cat /vagrant/config/cr100 > /etc/sysconfig/network-scripts/ifcfg-vlan100  
+      
+    - name: Cat ifcfg-vlan100
+      shell: cat /vagrant/config/cr101 > /etc/sysconfig/network-scripts/ifcfg-vlan101
+    
+    - name: restart network
+      systemd:
+        name: network
+        state: restarted
+        
+
+- name: testClient1
+  hosts: testClient1
+  become: true
+  
+  tasks:
+    - name: Cat ifcfg-vlan100
+      shell: cat /vagrant/config/tc100 > /etc/sysconfig/network-scripts/ifcfg-vlan100
+    
+    - name: restart network
+      systemd:
+        name: network
+        state: restarted
+
+
+- name: testServer1
+  hosts: testServer1
+  become: true
+  
+  tasks:
+    - name: Cat ifcfg-vlan100
+      shell: cat /vagrant/config/ts100 > /etc/sysconfig/network-scripts/ifcfg-vlan100
+  
+    - name: restart network
+      systemd:
+        name: network
+        state: restarted
+        
+
+- name: testClient2
+  hosts: testClient2
+  become: true
+  
+  tasks:
+    - name: Cat ifcfg-vlan101
+      shell: cat /vagrant/config/tc101 > /etc/sysconfig/network-scripts/ifcfg-vlan101
+    
+    - name: restart network
+      systemd:
+        name: network
+        state: restarted  
+        
+
+- name: testServer2
+  hosts: testServer2
+  become: true
+  
+  tasks:
+    - name: Cat ifcfg-vlan101
+      shell: cat /vagrant/config/ts101 > /etc/sysconfig/network-scripts/ifcfg-vlan101
+      
+    - name: restart network
+      systemd:
+        name: network
+        state: restarted    
