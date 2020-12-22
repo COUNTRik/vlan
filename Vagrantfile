@@ -5,27 +5,76 @@
 
 MACHINES = {
 
+# :inetRouter => {
+#       :box_name => "centos/7",
+#       :net => [
+#                  {ip: '192.168.255.1', adapter: 2, netmask: "255.255.255.240", virtualbox__intnet: "router-net"},
+#                  {ip: '192.168.255.1', adapter: 3, netmask: "255.255.255.240", virtualbox__intnet: "router-net"},
+#               ]
+# },
+
+# :centralRouter => {
+#       :box_name => "centos/7",
+#       :net => [
+#                  {ip: '192.168.255.2', adapter: 2, netmask: "255.255.255.240", virtualbox__intnet: "router-net"},
+#                  {ip: '192.168.255.2', adapter: 3, netmask: "255.255.255.240", virtualbox__intnet: "router-net"},
+#                  {ip: '10.10.10.2', adapter: 4, netmask: "255.255.255.0", virtualbox__intnet: "test"},
+#               ]
+# },
+
+# :testClient1 => {
+#       :box_name => "centos/7",
+#       :net => [
+#                  {ip: '10.10.10.1', adapter: 4, netmask: "255.255.255.0", virtualbox__intnet: "test"},
+                 
+#               ]
+# },
+
+# :testServer1 => {
+#       :box_name => "centos/7",
+#       :net => [
+#                  {ip: '10.10.10.254', adapter: 4, netmask: "255.255.255.0", virtualbox__intnet: "test"},
+                 
+#               ]
+# },
+
+# :testClient2 => {
+#       :box_name => "centos/7",
+#       :net => [
+#                  {ip: '10.10.10.1', adapter: 4, netmask: "255.255.255.0", virtualbox__intnet: "test"},
+                 
+#               ]
+# },
+
+# :testServer2 => {
+#       :box_name => "centos/7",
+#       :net => [
+#                  {ip: '10.10.10.254', adapter: 4, netmask: "255.255.255.0", virtualbox__intnet: "test"},
+                 
+#               ]
+# },
+
 :inetRouter => {
       :box_name => "centos/7",
       :net => [
-                 {ip: '192.168.255.1', adapter: 2, netmask: "255.255.255.240", virtualbox__intnet: "router-net"},
-                 {ip: '192.168.255.1', adapter: 3, netmask: "255.255.255.240", virtualbox__intnet: "router-net"},
+                 {virtualbox__intnet: "router-net", auto_config: false},
+                 {virtualbox__intnet: "router-net", auto_config: false},
               ]
 },
 
 :centralRouter => {
       :box_name => "centos/7",
       :net => [
-                 {ip: '192.168.255.2', adapter: 2, netmask: "255.255.255.240", virtualbox__intnet: "router-net"},
-                 {ip: '192.168.255.2', adapter: 3, netmask: "255.255.255.240", virtualbox__intnet: "router-net"},
-                 {ip: '10.10.10.5', adapter: 4, netmask: "255.255.255.0", virtualbox__intnet: "local"},
+                 {virtualbox__intnet: "router-net", auto_config: false},
+                 {virtualbox__intnet: "router-net", auto_config: false},
+                 {virtualbox__intnet: "test", auto_config: false},
               ]
 },
 
 :testClient1 => {
       :box_name => "centos/7",
       :net => [
-                 {ip: '10.10.10.1', adapter: 4, netmask: "255.255.255.0", virtualbox__intnet: "local"},
+                 {virtualbox__intnet: "test", auto_config: false},
                  
               ]
 },
@@ -33,7 +82,7 @@ MACHINES = {
 :testServer1 => {
       :box_name => "centos/7",
       :net => [
-                 {ip: '10.10.10.254', adapter: 4, netmask: "255.255.255.0", virtualbox__intnet: "local"},
+                 {virtualbox__intnet: "test", auto_config: false},
                  
               ]
 },
@@ -41,7 +90,7 @@ MACHINES = {
 :testClient2 => {
       :box_name => "centos/7",
       :net => [
-                 {ip: '10.10.10.1', adapter: 4, netmask: "255.255.255.0", virtualbox__intnet: "local"},
+                 {virtualbox__intnet: "test", auto_config: false},
                  
               ]
 },
@@ -49,7 +98,7 @@ MACHINES = {
 :testServer2 => {
       :box_name => "centos/7",
       :net => [
-                 {ip: '10.10.10.254', adapter: 4, netmask: "255.255.255.0", virtualbox__intnet: "local"},
+                 {virtualbox__intnet: "test", auto_config: false},
                  
               ]
 },

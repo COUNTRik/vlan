@@ -1,9 +1,46 @@
 ---
+- name: inetRouter
+  hosts: inetRouter
+  become: true
+  
+  tasks:
+    - name: Cat ifgfg-bond0
+      shell: cat /vagrant/config/ir-bond0 > /etc/sysconfig/network-scripts/ifcfg-bond0
+    
+    - name: Cat ifgfg-eth1
+      shell: cat /vagrant/config/bond0-eth1 > /etc/sysconfig/network-scripts/ifcfg-eth1
+
+    - name: Cat ifgfg-eth2
+      shell: cat /vagrant/config/bond0-eth2 > /etc/sysconfig/network-scripts/ifcfg-eth2
+
+    - name: Cat ifcfg-vlan100
+      shell: cat /vagrant/config/cr100 > /etc/sysconfig/network-scripts/ifcfg-vlan100  
+      
+    - name: Cat ifcfg-vlan100
+      shell: cat /vagrant/config/cr101 > /etc/sysconfig/network-scripts/ifcfg-vlan101
+    
+    - name: restart network
+      systemd:
+        name: network
+        state: restarted
+
 - name: centralRouter
   hosts: centralRouter
   become: true
   
   tasks:
+    - name: Cat ifgfg-bond0
+      shell: cat /vagrant/config/cr-bond0 > /etc/sysconfig/network-scripts/ifcfg-bond0
+    
+    - name: Cat ifgfg-eth1
+      shell: cat /vagrant/config/bond0-eth1 > /etc/sysconfig/network-scripts/ifcfg-eth1
+
+    - name: Cat ifgfg-eth2
+      shell: cat /vagrant/config/bond0-eth2 > /etc/sysconfig/network-scripts/ifcfg-eth2
+
+    - name: Cat ifcfg-eth3
+      shell: cat /vagrant/config/cr-eth3 > /etc/sysconfig/network-scripts/ifcfg-eth3 
+
     - name: Cat ifcfg-vlan100
       shell: cat /vagrant/config/cr100 > /etc/sysconfig/network-scripts/ifcfg-vlan100  
       
@@ -21,6 +58,9 @@
   become: true
   
   tasks:
+    - name: Cat ifcfg-eth1
+      shell: cat /vagrant/config/vlan-eth1 > /etc/sysconfig/network-scripts/ifcfg-eth1
+
     - name: Cat ifcfg-vlan100
       shell: cat /vagrant/config/tc100 > /etc/sysconfig/network-scripts/ifcfg-vlan100
     
@@ -35,6 +75,9 @@
   become: true
   
   tasks:
+    - name: Cat ifcfg-eth1
+      shell: cat /vagrant/config/vlan-eth1 > /etc/sysconfig/network-scripts/ifcfg-eth1
+
     - name: Cat ifcfg-vlan100
       shell: cat /vagrant/config/ts100 > /etc/sysconfig/network-scripts/ifcfg-vlan100
   
@@ -49,6 +92,9 @@
   become: true
   
   tasks:
+    - name: Cat ifcfg-eth1
+      shell: cat /vagrant/config/vlan-eth1 > /etc/sysconfig/network-scripts/ifcfg-eth1
+
     - name: Cat ifcfg-vlan101
       shell: cat /vagrant/config/tc101 > /etc/sysconfig/network-scripts/ifcfg-vlan101
     
@@ -63,6 +109,9 @@
   become: true
   
   tasks:
+    - name: Cat ifcfg-eth1
+      shell: cat /vagrant/config/vlan-eth1 > /etc/sysconfig/network-scripts/ifcfg-eth1
+      
     - name: Cat ifcfg-vlan101
       shell: cat /vagrant/config/ts101 > /etc/sysconfig/network-scripts/ifcfg-vlan101
       
