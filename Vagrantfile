@@ -57,24 +57,25 @@ MACHINES = {
 :inetRouter => {
       :box_name => "centos/7",
       :net => [
-                 {virtualbox__intnet: "router-net", auto_config: false},
-                 {virtualbox__intnet: "router-net", auto_config: false},
+                 {adapter: 2, virtualbox__intnet: "router-net"},
+                 {adapter: 3, virtualbox__intnet: "router-net"},
               ]
 },
 
 :centralRouter => {
       :box_name => "centos/7",
       :net => [
-                 {virtualbox__intnet: "router-net", auto_config: false},
-                 {virtualbox__intnet: "router-net", auto_config: false},
-                 {virtualbox__intnet: "test", auto_config: false},
+                 {adapter: 2, virtualbox__intnet: "router-net"},
+                 {adapter: 3, virtualbox__intnet: "router-net"},
+                 {ip: '192.168.0.3', adapter: 4, netmask: "255.255.255.0", virtualbox__intnet: "test"},
+                 # {virtualbox__intnet: "test"},
               ]
 },
 
 :testClient1 => {
       :box_name => "centos/7",
       :net => [
-                 {virtualbox__intnet: "test", auto_config: false},
+                 {ip: '192.168.0.1', adapter: 2, netmask: "255.255.255.0", virtualbox__intnet: "test"},
                  
               ]
 },
@@ -82,7 +83,7 @@ MACHINES = {
 :testServer1 => {
       :box_name => "centos/7",
       :net => [
-                 {virtualbox__intnet: "test", auto_config: false},
+                 {ip: '192.168.0.11', adapter: 2, netmask: "255.255.255.0", virtualbox__intnet: "test"},
                  
               ]
 },
@@ -90,7 +91,7 @@ MACHINES = {
 :testClient2 => {
       :box_name => "centos/7",
       :net => [
-                 {virtualbox__intnet: "test", auto_config: false},
+                 {ip: '192.168.0.2', adapter: 2, netmask: "255.255.255.0", virtualbox__intnet: "test"},
                  
               ]
 },
@@ -98,7 +99,7 @@ MACHINES = {
 :testServer2 => {
       :box_name => "centos/7",
       :net => [
-                 {virtualbox__intnet: "test", auto_config: false},
+                 {ip: '192.168.0.22', adapter: 2, netmask: "255.255.255.0", virtualbox__intnet: "test"},
                  
               ]
 },

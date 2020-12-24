@@ -13,11 +13,11 @@
     - name: Cat ifgfg-eth2
       shell: cat /vagrant/config/bond0-eth2 > /etc/sysconfig/network-scripts/ifcfg-eth2
 
-    - name: Cat ifcfg-vlan100
-      shell: cat /vagrant/config/cr100 > /etc/sysconfig/network-scripts/ifcfg-vlan100  
+    # - name: Cat ifcfg-vlan100
+    #   shell: cat /vagrant/config/cr100 > /etc/sysconfig/network-scripts/ifcfg-vlan100  
       
-    - name: Cat ifcfg-vlan100
-      shell: cat /vagrant/config/cr101 > /etc/sysconfig/network-scripts/ifcfg-vlan101
+    # - name: Cat ifcfg-vlan100
+    #   shell: cat /vagrant/config/cr101 > /etc/sysconfig/network-scripts/ifcfg-vlan101
     
     - name: restart network
       systemd:
@@ -38,14 +38,14 @@
     - name: Cat ifgfg-eth2
       shell: cat /vagrant/config/bond0-eth2 > /etc/sysconfig/network-scripts/ifcfg-eth2
 
-    - name: Cat ifcfg-eth3
-      shell: cat /vagrant/config/cr-eth3 > /etc/sysconfig/network-scripts/ifcfg-eth3 
+    # - name: Cat ifcfg-eth3
+    #   shell: cat /vagrant/config/cr-eth3 > /etc/sysconfig/network-scripts/ifcfg-eth3 
 
-    - name: Cat ifcfg-vlan100
-      shell: cat /vagrant/config/cr100 > /etc/sysconfig/network-scripts/ifcfg-vlan100  
-      
-    - name: Cat ifcfg-vlan100
-      shell: cat /vagrant/config/cr101 > /etc/sysconfig/network-scripts/ifcfg-vlan101
+    # - name: Cat ifcfg-vlan100
+    #   shell: cat /vagrant/config/cr100 > /etc/sysconfig/network-scripts/ifcfg-vlan100  
+
+    # - name: Cat ifcfg-vlan101
+    #   shell: cat /vagrant/config/cr101 > /etc/sysconfig/network-scripts/ifcfg-vlan101
     
     - name: restart network
       systemd:

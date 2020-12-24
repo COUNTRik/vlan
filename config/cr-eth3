@@ -1,4 +1,4 @@
 DEVICE=eth3
 ONBOOT=yes
-BOOTPROTO=none
+BOOTPROTO=static
 TYPE="Ethernet"
